@@ -32,12 +32,14 @@ public class MainActivity extends AppCompatActivity {
         mLoadImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Uncomment below code when you want to do long running operation in main thread.
                /* Bitmap bitmap= BitmapFactory.decodeResource(getResources(),R.mipmap.ic_launcher);
                 //Adding some delay manually
                 for(int i=1;i<11;i++){
                     sleep();
                 }
                 mImageView.setImageBitmap(bitmap);*/
+                //Doing the same thing in background thread.
                LoadImageTask loadImageTask=new LoadImageTask();
                 loadImageTask.execute(R.mipmap.ic_launcher,R.mipmap.ic_launcher,R.mipmap.ic_launcher,R.mipmap.ic_launcher);
             }
@@ -90,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+    //Used for explicitly putting delay to test the behaviour
     private void sleep() {
         try {
             Thread.sleep(500);
